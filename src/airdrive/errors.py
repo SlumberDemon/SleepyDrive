@@ -1,40 +1,40 @@
-class AirDriveException(Exception):
+class SleepyDriveException(Exception):
     """
-    The base class for all AirDrive exceptions.
+    The base class for all SleepyDrive exceptions.
     """
     pass
 
 
-class AccountNotFound(AirDriveException):
+class AccountNotFound(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
 
 
-class InvalidCredentials(AirDriveException):
+class InvalidCredentials(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
 
 
-class InvalidToken(AirDriveException):
+class UnableToCreate(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
 
 
-class InvalidURL(AirDriveException):
+class InvalidURL(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
 
 
-class InvalidFile(AirDriveException):
+class InvalidFile(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
 
 
-class FileNotFound(AirDriveException):
+class FileNotFound(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
 
 
-class InvalidParameter(AirDriveException):
+class InvalidParameter(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
