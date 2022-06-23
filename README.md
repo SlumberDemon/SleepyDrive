@@ -1,28 +1,28 @@
-![logo](https://raw.githubusercontent.com/jnsougata/AirDrive/main/ui/air.png)   
-## AirDrive
-AirDrive lets you store **unlimited** files to cloud for **free**. **Upload** & **download** files from your personal drive at any time using its super-fast API. 
+## SleepyDrive
+An edited version of [AirDrive](https://github.com/jnsougata/AirDrive) made for personal use but anyone can use it! 
+Its a simpler version made for easy access. It only supports private drives.
 
 ## Installation
-### `pip install airdrive`
+### `pip install git+https://github.com/SlumberDemon/SleepyDrive`
 
 ## Import
-### `from airdrive import AirDrive`
+### `from sleepydrive import SleepyDrive`
 
 ## Creating New Account
-### `drive = AirDrive.create(username, password, silent = True)`
+### `drive = SleepyDrive.create(silent = True)`
 - Parameters:
-  - **username** (str): Name of the user
-  - **password** (str): Password of the user
+  - **private_key**: https://deta.sh project key 
+  - **drive_name**: The name your drive will have
   - **silent** (bool): If True, it will not show any prompts (default: False)
-  - **raises**: `InvalidCredentials` , `InvalidToken`
+  - **raises**: `UnableToCreate` , `DriveNotFound`
 
 ## Logging In
-### `drive = AirDrive.login(username, password, silent = True)`
+### `drive = SleepyDrive.login(username, password, silent = True)`
 - Parameters:
-  - **username** (str): Name of the user
-  - **password** (str): Password of the user
+  - **private_key**: https://deta.sh project key 
+  - **drive_name**: The name of the drive to login
   - **silent** (bool): If True, it will not show any prompts (default: False)
-  - **raises**: `InvalidCredentials` , `InvalidToken`
+  - **raises**: `UnableToCreate` , `DriveNotFound`
 
 ## Methods
 

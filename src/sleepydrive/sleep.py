@@ -25,7 +25,8 @@ class SleepyDrive:
     def create(cls, private_key: str, drive_name: str, silent: bool = False):
         """
         Create a new drive
-        :param private_key: https://deta.sh project key (optional)
+        :param private_key: https://deta.sh project key
+        :param drive_name: The name your drive will have
         :param silent: if True, prompt will be shown
         :return: SleepyDrive object
         """
@@ -46,7 +47,8 @@ class SleepyDrive:
     def login(cls, private_key: str, drive_name: str, silent: bool = False):
         """
         Login to an existing drive
-        :param private_key: https://deta.sh project key (optional)
+        :param private_key: https://deta.sh project key
+        :param drive_name: The name of the drive to login
         :param silent: if True, prompt will be shown
         :return: SleepyDrive object
         """
@@ -60,7 +62,7 @@ class SleepyDrive:
                     print('-------')
                 return cls(drive=drive, silent=silent)
             else:
-                raise AccountNotFound(f"Drive doesn't exist")
+                raise DriveNotFound(f"Drive doesn't exist")
         except:
             raise UnableToCreate("Unable to create drive")
 

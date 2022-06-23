@@ -5,12 +5,7 @@ class SleepyDriveException(Exception):
     pass
 
 
-class AccountNotFound(SleepyDriveException):
-    def __init__(self, message):
-        super().__init__(message)
-
-
-class InvalidCredentials(SleepyDriveException):
+class DriveNotFound(SleepyDriveException):
     def __init__(self, message):
         super().__init__(message)
 
