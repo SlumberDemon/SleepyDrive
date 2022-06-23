@@ -224,26 +224,15 @@ class SleepyDrive:
         for file_name in self.files():
             self.download(file_name)
 
-    def delete(self, file_name: str = None, file_names: list[str] = None) -> None:
+    def delete(self, file_name: str = None) -> None:
         """
         Delete a file from the drive
         :param file_name: file name/path to delete
-        :param file_names: list of file names/paths to delete
         :return: None
         """
         if file_name and file_name != '.air':
             self.__drive.delete(file_name)
             self.__log(f"[!] Deleted | ({file_name})")
-
-        if file_names:
-            files = [file for file in file_names if file != '.air']
-            try:
-                self.__drive.delete_many(files)
-            except AssertionError:
-                raise InvalidParameter(f"Parameter 'file_names' must be a list of non-empty strings")
-            self.__log(f"[!] Deleted | ({' , '.join(files)})")
-        else:
-            raise InvalidParameter(f"Parameter 'file_names' must be a list of non-empty strings")
 
     def delete_all(self) -> None:
         """
