@@ -257,13 +257,3 @@ class SleepyDrive:
             self.__drive.put(name='.air', data=b' ')
         self.__drive.delete_many(files)
         self.__log("[!] Deleted all files")
-
-    def delete_account(self) -> None:
-        """
-        Deletes the entire account
-        :return: None
-        """
-        try:
-            self.__drive.delete_many(self.files())
-        except AssertionError:
-            raise AccountNotFound("Account having above credentials cannot be found")
