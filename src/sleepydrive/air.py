@@ -43,7 +43,7 @@ class SleepyDrive:
             raise UnableToCreate("Unable to create drive")
 
     @classmethod
-    def login(private_key: str = None, silent: bool = False):
+    def login(cls, private_key: str = None, silent: bool = False):
         """
         Login to an existing drive
         :param private_key: https://deta.sh project key (optional)
