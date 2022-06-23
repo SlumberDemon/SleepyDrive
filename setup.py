@@ -8,7 +8,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='sleepydrive',
-    version='0.2.9',
+    version='0.3.0',
     description='Edited version of AirDrive for personal use',
     long_description=long_description,
     long_description_content_type='text/markdown',
