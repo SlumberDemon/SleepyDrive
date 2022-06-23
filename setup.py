@@ -7,14 +7,13 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
-    name='airdrive',
+    name='sleepydrive',
     version='0.2.8',
-    description='Unlimited cloud storage for your files',
+    description='Edited version of AirDrive for personal use',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/jnsougata/AirDrive',
-    author='Sougata Jana',
-    author_email='jnsougata@gmail.com',
+    url='https://github.com/SlumberDemon/SleepyDrive',
+    author='SlumberDemon',
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
@@ -32,6 +31,6 @@ setup(
     install_requires=['deta', 'urllib3'],
     project_urls={
         'Bug Reports': 'https://github.com/jnsougata/AirDrive/issues',
-        'Source': 'https://github.com/jnsougata/AirDrive',
+        'Source': 'https://github.com/SlumberDemon/SleepyDrive',
     },
 )

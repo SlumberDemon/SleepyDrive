@@ -22,59 +22,47 @@ class AirDrive:
             print(prompt)
 
     @classmethod
-    def create(cls, username: str, password: str, private_key: str = None, silent: bool = False):
+    def create(cls, private_key: str = None, silent: bool = False):
         """
-        Create a new account
-        :param username: new username for the account
-        :param password: password for the account
+        Create a new drive
         :param private_key: https://deta.sh project key (optional)
         :param silent: if True, prompt will be shown
         :return: AirDrive object
         """
         key = private_key if private_key else PK
-        if len(username) < 5:
-            raise InvalidCredentials("Use at least 5 ")
-        if password == PK:
-            raise InvalidCredentials("Don't use project key as password")
-        if len(password) < 8:
-            raise InvalidCredentials("Use at least 8 characters")
-        if username == password:
-            raise InvalidCredentials("Username and password can't be the same")
         try:
-            drive = Deta(key).Drive(f'{username}_{password}'.replace('#', '_'))
+            drive = Deta(key).Drive('images')
             files = drive.list().get('names')
             if files:
-                return cls.login(username, password, private_key)
+                return cls.login(private_key)
             if not silent:
-                print(f"Account ({username}) created")
+                print(f"Drive created")
             drive.put(name='.air', data=b' ')
             return cls(drive=drive, silent=silent)
-        except AssertionError:
-            raise InvalidToken("Used an invalid login token")
+        except:
+            raise UnableToCreate("Unable to create drive")
 
     @classmethod
-    def login(cls, username: str, password: str, private_key: str = None, silent: bool = False):
+    def login(private_key: str = None, silent: bool = False):
         """
-        Login to an existing account
-        :param username: username associated the account
-        :param password: password associated the account
+        Login to an existing drive
         :param private_key: https://deta.sh project key (optional)
         :param silent: if True, prompt will be shown
         :return: AirDrive object
         """
         key = private_key if private_key else PK
         try:
-            drive = Deta(key).Drive(f'{username}_{password}')
+            drive = Deta(key).Drive('images')
             files = drive.list().get('names')
             if files:
                 if not silent:
-                    print(f"Logged in as ({username})")
+                    print(f"Logged in")
                     print('-------')
                 return cls(drive=drive, silent=silent)
             else:
-                raise AccountNotFound(f"Account ({username}) doesn't exist")
-        except AssertionError:
-            raise InvalidToken("Used an invalid login token")
+                raise AccountNotFound(f"Drive doesn't exist")
+        except:
+            raise UnableToCreate("Unable to create drive")
 
     def files(self) -> list:
         """
