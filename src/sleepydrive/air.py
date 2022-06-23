@@ -22,7 +22,7 @@ class SleepyDrive:
             print(prompt)
 
     @classmethod
-    def create(cls, private_key: str = None, silent: bool = False):
+    def create(cls, private_key: str, drive_name: str, silent: bool = False):
         """
         Create a new drive
         :param private_key: https://deta.sh project key (optional)
@@ -31,7 +31,7 @@ class SleepyDrive:
         """
         key = private_key if private_key else PK
         try:
-            drive = Deta(key).Drive('images')
+            drive = Deta(key).Drive(drive_name)
             files = drive.list().get('names')
             if files:
                 return cls.login(private_key)
@@ -43,7 +43,7 @@ class SleepyDrive:
             raise UnableToCreate("Unable to create drive")
 
     @classmethod
-    def login(cls, private_key: str = None, silent: bool = False):
+    def login(cls, private_key: str, drive_name: str, silent: bool = False):
         """
         Login to an existing drive
         :param private_key: https://deta.sh project key (optional)
@@ -52,7 +52,7 @@ class SleepyDrive:
         """
         key = private_key if private_key else PK
         try:
-            drive = Deta(key).Drive('images')
+            drive = Deta(key).Drive(drive_name)
             files = drive.list().get('names')
             if files:
                 if not silent:
