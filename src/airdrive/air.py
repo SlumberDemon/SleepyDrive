@@ -8,14 +8,14 @@ from time import perf_counter
 from urllib3 import PoolManager
 
 
-class AirDrive:
+class SleepyDrive:
     def __init__(self, drive: Deta.Drive, silent: bool = False):
         self.__drive = drive
         self.__silent = silent
         self.__http = PoolManager()
 
     def __repr__(self):
-        return f"<AirDrive>"
+        return f"<SleepyDrive>"
 
     def __log(self, prompt: str) -> None:
         if not self.__silent:
@@ -27,7 +27,7 @@ class AirDrive:
         Create a new drive
         :param private_key: https://deta.sh project key (optional)
         :param silent: if True, prompt will be shown
-        :return: AirDrive object
+        :return: SleepyDrive object
         """
         key = private_key if private_key else PK
         try:
@@ -48,7 +48,7 @@ class AirDrive:
         Login to an existing drive
         :param private_key: https://deta.sh project key (optional)
         :param silent: if True, prompt will be shown
-        :return: AirDrive object
+        :return: SleepyDrive object
         """
         key = private_key if private_key else PK
         try:
